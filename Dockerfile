@@ -12,14 +12,15 @@ RUN apt-get update \
         jq \
         psmisc \
         tini \
-        curl \
+        wget curl \
         dbus-x11 \
         xauth xinit x11-xserver-utils \
         xdg-utils \
         python3-pip \
-        xfce4 xfce4-goodies xfce4-terminal elementary-xfce-icon-theme \
-        ubuntu-mate-desktop \
-        xterm \
+        xfce4 xfce4-goodies elementary-xfce-icon-theme \
+        xterm xfce4-terminal \
+        zsh bash fish tcsh \
+        firefox chromium-browser \
   && apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /var/tmp/*
 
 RUN DEB=/tmp/turbovnc_3.0.3_amd64.deb \
