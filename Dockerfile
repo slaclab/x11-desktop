@@ -17,10 +17,11 @@ RUN apt-get update \
         xauth xinit x11-xserver-utils \
         xdg-utils \
         python3-pip \
-        xfce4 xfce4-goodies elementary-xfce-icon-theme \
+        xfce4 elementary-xfce-icon-theme \
         xterm xfce4-terminal \
         zsh bash fish tcsh \
         firefox chromium-browser \
+  && apt-get remove -y xfce4-screensaver \
   && apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /var/tmp/*
 
 RUN DEB=/tmp/turbovnc_3.0.3_amd64.deb \
@@ -32,5 +33,7 @@ RUN pip3 install websockify
 
 ENV PATH=/opt/TurboVNC/bin/:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+# disable screensavers etc
+RUN rm -vf /etc/xdg/autostart/xfce4-screensaver.desktop /etc/xdg/autostart/xscreensaver.desktop /etc/xdg/autostart/xfce4-power-manager.desktop /etc/xdg/autostart/pulseaudio.desktop
 
 

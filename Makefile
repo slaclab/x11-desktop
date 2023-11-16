@@ -11,4 +11,6 @@ push:
 
 apptainer:
 	# install the image into teh expected location for ondemand
-	apptainer pull -F --dir $(ONDEMAND_IMAGE_PATH) docker://$(IMAGE):$(TAG)
+	apptainer pull --disable-cache -F --dir $(ONDEMAND_IMAGE_PATH) docker://$(IMAGE):$(TAG)
+
+all: build push apptainer
