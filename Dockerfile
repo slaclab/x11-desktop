@@ -20,8 +20,13 @@ RUN apt-get update \
         xfce4 elementary-xfce-icon-theme \
         xterm xfce4-terminal \
         zsh bash fish tcsh \
-        firefox chromium-browser \
+        software-properties-common \
   && apt-get remove -y xfce4-screensaver \
+  && add-apt-repository ppa:mozillateam/ppa \
+  && add-apt-repository ppa:savoury1/chromium \
+  && apt-get update \
+  && apt-get install -y \
+        firefox-esr chromium-browser \
   && apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /var/tmp/*
 
 RUN DEB=/tmp/turbovnc_3.0.3_amd64.deb \
